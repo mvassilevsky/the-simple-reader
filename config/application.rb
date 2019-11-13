@@ -15,5 +15,10 @@ module TheSimpleReader
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    # Establish database connection on console startup.
+    console do
+      ActiveRecord::Base.connection
+    end
   end
 end
