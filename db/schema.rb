@@ -29,9 +29,11 @@ ActiveRecord::Schema.define(version: 2019_11_14_205248) do
     t.string "author"
     t.string "content"
     t.string "url"
+    t.datetime "posted_at", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["feed_id"], name: "index_posts_on_feed_id"
+    t.index ["posted_at"], name: "index_posts_on_posted_at"
   end
 
   create_table "user_feeds", force: :cascade do |t|
