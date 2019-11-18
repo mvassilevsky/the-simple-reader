@@ -12,7 +12,10 @@
 #
 # Indexes
 #
-#  index_user_posts_on_user_id_and_post_id_and_read_and_saved  (user_id,post_id,read,saved)
+#  index_user_posts_on_post_id  (post_id)
+#  index_user_posts_on_read     (read)
+#  index_user_posts_on_saved    (saved)
+#  index_user_posts_on_user_id  (user_id)
 #
 
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

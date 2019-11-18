@@ -6,7 +6,10 @@ class CreateUserPosts < ActiveRecord::Migration[6.0]
       t.boolean :read, default: false
       t.boolean :saved, default: false
 
-      t.index [:user_id, :post_id, :read, :saved]
+      t.index :user_id
+      t.index :post_id
+      t.index :read
+      t.index :saved
 
       t.timestamps
     end

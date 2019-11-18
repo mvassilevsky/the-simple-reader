@@ -39,7 +39,8 @@ ActiveRecord::Schema.define(version: 2019_11_14_205248) do
     t.string "feed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id", "feed_id"], name: "index_user_feeds_on_user_id_and_feed_id"
+    t.index ["feed_id"], name: "index_user_feeds_on_feed_id"
+    t.index ["user_id"], name: "index_user_feeds_on_user_id"
   end
 
   create_table "user_posts", force: :cascade do |t|
@@ -49,7 +50,10 @@ ActiveRecord::Schema.define(version: 2019_11_14_205248) do
     t.boolean "saved", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id", "post_id", "read", "saved"], name: "index_user_posts_on_user_id_and_post_id_and_read_and_saved"
+    t.index ["post_id"], name: "index_user_posts_on_post_id"
+    t.index ["read"], name: "index_user_posts_on_read"
+    t.index ["saved"], name: "index_user_posts_on_saved"
+    t.index ["user_id"], name: "index_user_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
