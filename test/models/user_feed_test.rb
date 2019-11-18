@@ -5,8 +5,8 @@
 #  id         :bigint           not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  feed_id    :string
-#  user_id    :string
+#  feed_id    :integer
+#  user_id    :integer
 #
 # Indexes
 #

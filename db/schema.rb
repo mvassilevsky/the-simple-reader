@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2019_11_14_205248) do
   end
 
   create_table "user_feeds", force: :cascade do |t|
-    t.string "user_id"
-    t.string "feed_id"
+    t.integer "user_id"
+    t.integer "feed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["feed_id"], name: "index_user_feeds_on_feed_id"
