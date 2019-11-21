@@ -26,4 +26,16 @@ class User < ApplicationRecord
   has_many :user_feeds
   has_many :feeds, through: :user_feeds
   has_many :posts, through: :feeds
+  has_many :user_posts
+  has_many :bookmarked_posts, -> { where(user_posts: { bookmarked: true }) },
+           through: :user_posts, source: :post
+
+
+  # Returns whether a post has been bookmarked by this user.
+  #
+  # @param post [Post]
+  # @return [TrueClass|FalseClass] whether the user has bookmarked this post
+  def bookmarked?(post)
+    user_posts.where(post_id: post.id, bookmarked: true).exists?
+  end
 end

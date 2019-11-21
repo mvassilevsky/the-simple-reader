@@ -10,4 +10,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :feeds, except: :edit
+
+  resources :posts, only: [] do
+    member do
+      post 'bookmark'
+      delete 'bookmark', as: 'unbookmark', to: 'posts#unbookmark'
+    end
+  end
 end

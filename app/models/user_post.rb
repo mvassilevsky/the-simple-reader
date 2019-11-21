@@ -22,4 +22,16 @@
 class UserPost < ApplicationRecord
   belongs_to :user
   belongs_to :post
+
+  # Bookmarks a post for a user.
+  def bookmark!
+    return self if bookmarked?
+    update!(bookmarked: true)
+  end
+
+  # Unbookmarks a post for a user.
+  def unbookmark!
+    return self unless bookmarked?
+    update!(bookmarked: false)
+  end
 end
