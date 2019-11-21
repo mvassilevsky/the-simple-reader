@@ -1,3 +1,8 @@
-<h1><%= @feed.title %></h1>
+<h1><%= link_to @feed.title, @feed %></h1>
+<% unless params[:bookmarked] %>
+  <div>
+    <%= link_to 'Bookmarked Posts', feed_path(@feed, :bookmarked => true) %>
+  </div>
+<% end %>
 <%= render partial: 'feeds/shared/feeds_sidebar', locals: { feeds: @feeds } %>
 <%= render partial: 'feeds/shared/feed', locals: { posts: @posts } %>
