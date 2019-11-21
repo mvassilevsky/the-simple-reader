@@ -49,12 +49,13 @@ ActiveRecord::Schema.define(version: 2019_11_14_205248) do
     t.string "user_id"
     t.string "post_id"
     t.boolean "read", default: false
-    t.boolean "saved", default: false
+    t.boolean "bookmarked", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["bookmarked"], name: "index_user_posts_on_bookmarked"
     t.index ["post_id"], name: "index_user_posts_on_post_id"
     t.index ["read"], name: "index_user_posts_on_read"
-    t.index ["saved"], name: "index_user_posts_on_saved"
+    t.index ["user_id", "post_id"], name: "index_user_posts_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_user_posts_on_user_id"
   end
 
