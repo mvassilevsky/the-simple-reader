@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_205248) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["feed_id"], name: "index_user_feeds_on_feed_id"
+    t.index ["user_id", "feed_id"], name: "index_user_feeds_on_user_id_and_feed_id", unique: true
     t.index ["user_id"], name: "index_user_feeds_on_user_id"
   end
 

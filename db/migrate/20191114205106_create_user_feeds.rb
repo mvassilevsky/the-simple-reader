@@ -6,6 +6,7 @@ class CreateUserFeeds < ActiveRecord::Migration[6.0]
 
       t.index :user_id
       t.index :feed_id
+      t.index [:user_id, :feed_id], unique: true
 
       t.timestamps
     end

@@ -10,8 +10,9 @@
 #
 # Indexes
 #
-#  index_user_feeds_on_feed_id  (feed_id)
-#  index_user_feeds_on_user_id  (user_id)
+#  index_user_feeds_on_feed_id              (feed_id)
+#  index_user_feeds_on_user_id              (user_id)
+#  index_user_feeds_on_user_id_and_feed_id  (user_id,feed_id) UNIQUE
 #
 
 class UserFeed < ApplicationRecord
