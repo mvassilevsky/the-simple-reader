@@ -7,8 +7,8 @@
 #  read       :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  post_id    :string
-#  user_id    :string
+#  post_id    :integer
+#  user_id    :integer
 #
 # Indexes
 #

@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 2019_11_14_205248) do
   end
 
   create_table "user_posts", force: :cascade do |t|
-    t.string "user_id"
-    t.string "post_id"
+    t.integer "user_id"
+    t.integer "post_id"
     t.boolean "read", default: false
     t.boolean "bookmarked", default: false
     t.datetime "created_at", precision: 6, null: false
