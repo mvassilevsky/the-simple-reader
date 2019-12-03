@@ -20,5 +20,10 @@ module TheSimpleReader
     console do
       ActiveRecord::Base.connection
     end
+
+    # Add more tags to the HTML sanitizer whitelist.
+    config.action_view.sanitized_allowed_tags =
+      Rails::Html::Sanitizer.safe_list_sanitizer.allowed_tags +
+      ['video', 'iframe']
   end
 end

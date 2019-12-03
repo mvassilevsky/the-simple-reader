@@ -1,3 +1,10 @@
+<div><strong>Subscribe</strong>:</div>
+<%= form_with model: Feed.new do |form| %>
+  <%= form.label :url, 'Feed URL' %>
+  <%= form.text_field :url %>
+  <%= form.submit 'Subscribe' %>
+<% end %>
+<br>
 <div><strong>Feeds</strong>:</div>
 <% feeds.each do |feed| %>
   <%= link_to feed.title, feed %>

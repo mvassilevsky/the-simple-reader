@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_205248) do
     t.string "favicon_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["url"], name: "index_feeds_on_url", unique: true
   end
 
   create_table "posts", force: :cascade do |t|

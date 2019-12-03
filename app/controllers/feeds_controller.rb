@@ -17,4 +17,17 @@ class FeedsController < ApplicationController
       @posts = @feed.posts.order(posted_at: :desc)
     end
   end
+
+  def create
+    url = Feed.normalized_url(params[:feed][:url])
+    feed = Feed.find_by_url(url)
+    if feed && !current_user.feeds.exists?(feed.id)
+      current_user.feeds << feed
+    elsif feed.nil?
+      feed = Feed.create_from_url(url)
+      current_user.feeds << feed if feed.persisted?
+    end
+    redirect_back(fallback_location: root_path,
+                  flash: { error: feed.errors.full_messages })
+  end
 end

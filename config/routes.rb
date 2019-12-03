@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :feeds, except: :edit
+  resources :feeds, except: :edit do
+    member do
+      delete 'unsubscribe', as: 'unsubscribe', to: 'feeds#unsubscribe'
+    end
+  end
 
   resources :posts, only: [] do
     member do

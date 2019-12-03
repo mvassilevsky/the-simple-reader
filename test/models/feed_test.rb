@@ -9,6 +9,10 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
+# Indexes
+#
+#  index_feeds_on_url  (url) UNIQUE
+#
 
 require 'test_helper'
 

@@ -5,6 +5,8 @@ class CreateFeeds < ActiveRecord::Migration[6.0]
       t.string :url, null: false
       t.string :favicon_url
 
+      t.index :url, unique: true
+
       t.timestamps
     end
   end
