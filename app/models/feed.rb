@@ -42,7 +42,7 @@ class Feed < ApplicationRecord
 
   def parse_and_save
     begin
-      parsed_feed = Feedjira.parse(HTTParty.get(url))
+      parsed_feed = Feedjira.parse(HTTParty.get(url).body)
       self.favicon_url = build_favicon_url(url)
       self.title = parsed_feed.title
       save if changed?

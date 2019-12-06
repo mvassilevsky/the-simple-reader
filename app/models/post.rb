@@ -25,8 +25,10 @@ class Post < ApplicationRecord
 
   # Initializes a Post from a Feedjira parsed entry.
   def self.parse(feed_entry)
+    content = feed_entry.content
+    content = feed_entry.summary if content.nil?
     Post.new(author: feed_entry.author,
-             content: sanitize_content(feed_entry.content),
+             content: sanitize_content(content),
              title: feed_entry.title,
              posted_at: feed_entry.published)
   end
