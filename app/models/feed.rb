@@ -20,17 +20,6 @@ class Feed < ApplicationRecord
 
   has_many :posts
 
-  # Returns a normalized URL that will identify the feed. Removes trailing
-  # slashes.
-  #
-  # @param url [String] url to be normalized
-  # @return [String] normalized url
-  def self.normalized_url(url)
-    parsed_url = URI.parse(url)
-    path = parsed_url.path.gsub(/\/+$/, '')
-    "#{parsed_url.scheme}://#{parsed_url.host}#{parsed_url.path}"
-  end
-
   # Creates a new feed from a feed url.
   #
   # @param url [String] the feed's url

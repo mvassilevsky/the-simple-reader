@@ -19,12 +19,12 @@ class FeedsController < ApplicationController
   end
 
   def create
-    url = Feed.normalized_url(params[:feed][:url])
+    url = FeedUrl.normalized_url(params[:feed][:url])
     feed = Feed.find_by_url(url)
     if feed && !current_user.feeds.exists?(feed.id)
       current_user.feeds << feed
     elsif feed.nil?
-      feed = Feed.create_from_url(url)
+      feed = Feed.create_from_url(FeedUrl.feed_url(url))
       current_user.feeds << feed if feed.persisted?
     end
     redirect_back(fallback_location: root_path,
