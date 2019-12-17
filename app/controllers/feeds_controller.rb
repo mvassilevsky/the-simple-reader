@@ -1,4 +1,6 @@
 class FeedsController < ApplicationController
+  before_action :authenticate_user!, :except => [:show]
+
   def index
     @feeds = current_user.feeds
     if params[:bookmarked]
