@@ -3,13 +3,14 @@ class FeedUrl
 
   # @param url [String] feed or site url
   def self.feed_url(url)
-    at_root = URI.parse(url).path.tr('/', '').blank?
+    normal_url = normalized_url(url)
+    at_root = URI.parse(normal_url).path.blank?
     if at_root
-      site = SITES.find { |site| site.match?(url) }
-      return site.feed_url(normalized_url(url)) unless site.nil?
-      normalized_url(url)
+      site = SITES.find { |site| site.match?(normal_url) }
+      return site.feed_url(normal_url) unless site.nil?
+      normal_url
     else
-      normalized_url(url)
+      normal_url
     end
   end
 
