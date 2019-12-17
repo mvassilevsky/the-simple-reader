@@ -13,8 +13,12 @@
     <%= render 'layouts/header' %>
     <% flash.each do |key, value| %>
       <%= content_tag :div, class: "flash #{key}" do %>
-        <% value.each do |value| %>
+        <% if value.is_a?(String) %>
           <%= content_tag :div, value %>
+        <% else %>
+          <% value.each do |subvalue| %>
+            <%= content_tag :div, subvalue %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
