@@ -30,4 +30,10 @@ class FeedsController < ApplicationController
     redirect_back(fallback_location: root_path,
                   flash: { error: feed.errors.full_messages })
   end
+
+  def unsubscribe
+    feed_id = params[:id]
+    UserFeed.destroy_by(user_id: current_user.id, feed_id: feed_id)
+    redirect_to feeds_path
+  end
 end

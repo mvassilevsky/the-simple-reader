@@ -4,5 +4,8 @@
     <%= link_to 'Bookmarked Posts', feed_path(@feed, :bookmarked => true) %>
   </div>
 <% end %>
+<div>
+  <%= link_to 'Unsubscribe', unsubscribe_feed_path(@feed), method: 'delete' %>
+</div>
 <%= render partial: 'feeds/shared/feeds_sidebar', locals: { feeds: @feeds } %>
 <%= render partial: 'feeds/shared/feed', locals: { posts: @posts } %>
