@@ -28,5 +28,8 @@ module TheSimpleReader
     config.action_view.sanitized_allowed_tags =
       Rails::Html::Sanitizer.safe_list_sanitizer.allowed_tags +
       ['video', 'iframe']
+
+    # Use Sidekiq to run queued jobs.
+    config.active_job.queue_adapter = :sidekiq
   end
 end

@@ -48,7 +48,8 @@ class Feed < ApplicationRecord
     empty_feed = posts.none?
     parsed_feed.entries.each do |entry|
       post = Post.parse(entry)
-      posts << post if empty_feed || post.new_post?
+      post.feed_id = id
+      post.save! if empty_feed || post.new_post?
     end
   end
 

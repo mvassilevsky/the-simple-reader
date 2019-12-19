@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  authenticated :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   authenticated :user do
     root 'feeds#index', as: :authenticated_root
   end
