@@ -1,15 +1,17 @@
-<% posts.each do |post| %>
-  <h2><%= post.title %></h2>
-  <div><%= post.author %></div>
-  <div><%= post.posted_at %></div>
-  <div><%= post.content.html_safe %></div>
-  <div>
-    <% if current_user.bookmarked?(post) %>
-      <%= button_to 'Unbookmark',
-          unbookmark_post_path(post), method: 'delete' %>
-    <% else %>
-      <%= button_to 'Bookmark', bookmark_post_path(post), method: 'post' %>
-    <% end %>
-  </div>
-  <hr>
-<% end %>
+<div class="feed">
+  <% posts.each do |post| %>
+    <h2><%= post.title %></h2>
+    <div><%= post.author %></div>
+    <div><%= post.posted_at %></div>
+    <div><%= post.content.html_safe %></div>
+    <div>
+      <% if current_user.bookmarked?(post) %>
+        <%= button_to 'Unbookmark',
+            unbookmark_post_path(post), method: 'delete' %>
+      <% else %>
+        <%= button_to 'Bookmark', bookmark_post_path(post), method: 'post' %>
+      <% end %>
+    </div>
+    <hr>
+  <% end %>
+</div>
