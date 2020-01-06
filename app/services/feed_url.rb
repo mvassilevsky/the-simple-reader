@@ -1,5 +1,5 @@
 class FeedUrl
-  SITES = [Sites::Blogspot].freeze
+  SITES = [Sites::Blogspot, Sites::Wordpress].freeze
 
   # @param url [String] feed or site url
   def self.feed_url(url)
