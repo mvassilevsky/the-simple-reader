@@ -1,6 +1,12 @@
 <div class="feed">
   <% posts.each do |post| %>
-    <h3><%= post.title %></h3>
+    <h3>
+      <% if post.url %>
+        <%= link_to post.title, post.url %>
+      <% else %>
+        <%= post.title %>
+      <% end %>
+    </h3>
     <div><%= post.author %>, <%= post.posted_at.strftime('%Y-%m-%d') %></div>
     <br>
     <div><%= post.content.html_safe %></div>
