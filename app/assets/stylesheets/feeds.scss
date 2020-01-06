@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.feed-header {
+  h2 {
+    margin-top: 0;
+  }
+}
+
 .feed {
   margin: auto;
   max-width: 100%;
