@@ -30,6 +30,7 @@ class Post < ApplicationRecord
     Post.new(author: feed_entry.author,
              content: sanitize_content(content),
              title: feed_entry.title,
+             url: feed_entry.url,
              posted_at: feed_entry.published)
   end
 
