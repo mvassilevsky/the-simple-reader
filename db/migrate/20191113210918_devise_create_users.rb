@@ -34,6 +34,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
 
       t.boolean :admin, null: false, default: false
 
+      t.boolean :unread_only, null: false, default: true
+      t.boolean :new_posts_first, null: false, default: true
+
       t.timestamps null: false
     end
 
