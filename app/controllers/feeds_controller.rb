@@ -4,9 +4,9 @@ class FeedsController < ApplicationController
   def index
     @feeds = current_user.feeds
     if params[:bookmarked]
-      @posts = current_user.bookmarked_posts
+      @posts = current_user.bookmarked_posts.order(posted_at: post_order)
     else
-      @posts = current_user.posts.order(posted_at: :desc)
+      @posts = current_user.posts.order(posted_at: post_order)
     end
   end
 
@@ -14,9 +14,10 @@ class FeedsController < ApplicationController
     @feed = Feed.find(params[:id])
     @feeds = current_user.feeds
     if params[:bookmarked]
-      @posts = current_user.bookmarked_posts.where(feed_id: @feed.id)
+      @posts =
+        current_user.bookmarked_posts.where(feed_id: @feed.id).order(post_order)
     else
-      @posts = @feed.posts.order(posted_at: :desc)
+      @posts = @feed.posts.order(posted_at: post_order)
     end
   end
 
@@ -37,5 +38,11 @@ class FeedsController < ApplicationController
     feed_id = params[:id]
     UserFeed.destroy_by(user_id: current_user.id, feed_id: feed_id)
     redirect_to feeds_path
+  end
+
+  private
+
+  def post_order
+    current_user.post_order
   end
 end

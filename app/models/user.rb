@@ -41,4 +41,9 @@ class User < ApplicationRecord
   def bookmarked?(post)
     user_posts.where(post_id: post.id, bookmarked: true).exists?
   end
+
+  def post_order
+    return :desc if new_posts_first
+    :asc
+  end
 end
