@@ -1,3 +1,15 @@
 .feed-sidebar {
   float: left;
 }
+
+.flash {
+  font-weight: bold;
+
+  &.notice {
+    color: green;
+  }
+
+  &.error {
+    color: red;
+  }
+}
