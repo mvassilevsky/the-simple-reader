@@ -22,6 +22,7 @@ class Post < ApplicationRecord
   validates :feed_id, presence: true
 
   belongs_to :feed
+  has_many :user_posts
 
   # Initializes a Post from a Feedjira parsed entry.
   def self.parse(feed_entry)
@@ -40,6 +41,10 @@ class Post < ApplicationRecord
   # @return [TrueClass|FalseClass] whether the post is new
   def new_post?
     new_record? && Post.where(feed_id: feed_id, posted_at: posted_at).none?
+  end
+
+  def read_by?(user)
+    user_posts.where(user_id: user.id, read: true).exists?
   end
 
   private

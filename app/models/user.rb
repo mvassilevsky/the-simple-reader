@@ -32,7 +32,15 @@ class User < ApplicationRecord
   has_many :user_posts
   has_many :bookmarked_posts, -> { where(user_posts: { bookmarked: true }) },
            through: :user_posts, source: :post
-
+  has_many :unread_posts, -> (user) {
+             where.not(
+              'EXISTS(' \
+                'SELECT post_id ' \
+                'FROM user_posts ' \
+                'WHERE read = TRUE AND post_id = posts.id AND user_id = ? ' \
+              ')', user.id
+             )
+           }, through: :feeds, source: :posts, class_name: 'Post'
 
   # Returns whether a post has been bookmarked by this user.
   #

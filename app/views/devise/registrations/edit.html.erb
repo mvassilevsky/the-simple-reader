@@ -17,6 +17,16 @@
     <%= f.label :new_posts_first, 'Oldest posts first', value: false %>
   </div>
   <br>
+  <div class="field">
+    <%= f.label :unread_only %>
+    <br>
+    <%= f.radio_button :unread_only, true, checked: resource.unread_only, :value => true %>
+    <%= f.label :unread_only, 'Show only unread posts', value: true %>
+    <br>
+    <%= f.radio_button :unread_only, false, checked: !resource.unread_only, :value => false %>
+    <%= f.label :unread_only, 'Show all posts', value: false %>
+  </div>
+  <br>
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

@@ -1,6 +1,6 @@
 <div class="feed">
   <% posts.each do |post| %>
-    <div class="post <%= 'unread' if true %>">
+    <div class="post<%= post.read_by?(current_user) ? ' read' : ' unread' %><%= ' mark-unread' if current_user.unread_only %>" data-id="<%= post.id%>">
       <h3>
         <% if post.url %>
           <%= link_to post.title, post.url %>
@@ -13,14 +13,14 @@
       <div><%= post.content.html_safe %></div>
       <br>
       <div>
-        <% if current_user.bookmarked?(post) %>
+        <% if @bookmarked_posts.include?(post) %>
           <%= button_to 'Unbookmark',
               unbookmark_post_path(post), method: 'delete' %>
         <% else %>
           <%= button_to 'Bookmark', bookmark_post_path(post), method: 'post' %>
         <% end %>
       </div>
-      <hr>
     </div>
+    <hr>
   <% end %>
 </div>

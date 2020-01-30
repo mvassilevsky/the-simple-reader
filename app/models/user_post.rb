@@ -34,4 +34,10 @@ class UserPost < ApplicationRecord
     return self unless bookmarked?
     update!(bookmarked: false)
   end
+
+  # Marks a post read for a user.
+  def mark_read!
+    return self if read?
+    update!(read: true)
+  end
 end

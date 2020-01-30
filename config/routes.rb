@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     member do
       post 'bookmark'
       delete 'bookmark', as: 'unbookmark', to: 'posts#unbookmark'
+      post 'mark_read'
     end
   end
 end

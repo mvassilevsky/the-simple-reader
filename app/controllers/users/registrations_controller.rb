@@ -4,7 +4,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:account_update, keys: [:new_posts_first])
+    devise_parameter_sanitizer.permit(:account_update,
+                                      keys: [:new_posts_first, :unread_only])
   end
 
   def update_resource(resource, params)

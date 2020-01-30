@@ -1,24 +1,13 @@
 class FeedsController < ApplicationController
   before_action :authenticate_user!, :except => [:show]
+  before_action :set_up_feed, :only => [:index, :show]
 
   def index
-    @feeds = current_user.feeds
-    if params[:bookmarked]
-      @posts = current_user.bookmarked_posts.order(posted_at: post_order)
-    else
-      @posts = current_user.posts.order(posted_at: post_order)
-    end
   end
 
   def show
     @feed = Feed.find(params[:id])
-    @feeds = current_user.feeds
-    if params[:bookmarked]
-      @posts =
-        current_user.bookmarked_posts.where(feed_id: @feed.id).order(post_order)
-    else
-      @posts = @feed.posts.order(posted_at: post_order)
-    end
+    @posts = @posts.where(feed_id: @feed.id)
   end
 
   def create
@@ -41,6 +30,20 @@ class FeedsController < ApplicationController
   end
 
   private
+
+  def set_up_feed
+    @feeds = current_user.feeds
+
+    @bookmarked_posts = current_user.bookmarked_posts.load
+    @posts = if params[:bookmarked]
+               @bookmarked_posts
+             elsif current_user.unread_only
+               current_user.unread_posts
+             else
+               current_user.posts.includes(:user_posts)
+             end
+    @posts = @posts.order(posted_at: post_order)
+  end
 
   def post_order
     current_user.post_order
