@@ -1,11 +1,11 @@
 <header>
-  <%= link_to 'Home', root_path %>
+  <%= link_to 'Home', root_path %> | 
   <% if current_user %>
-    <%= link_to 'Bookmarked Posts', feeds_path(@feed, :bookmarked => true) %>
-    <%= link_to 'Settings', edit_user_registration_path %>
+    <%= link_to 'Bookmarked Posts', feeds_path(@feed, :bookmarked => true) %> | 
+    <%= link_to 'Settings', edit_user_registration_path %> | 
     <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
   <% else %>
-    <%= link_to 'Login', new_user_session_path %>
+    <%= link_to 'Login', new_user_session_path %> | 
     <%= link_to 'Register', new_user_registration_path %>
   <% end %>
   <hr>
