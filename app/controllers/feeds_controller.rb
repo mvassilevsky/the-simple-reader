@@ -33,7 +33,7 @@ class FeedsController < ApplicationController
 
   def set_up_feed
     @feeds = current_user.feeds
-
+    @bookmarked_only = params[:bookmarked]
     @bookmarked_posts = current_user.bookmarked_posts.load
     @posts = if params[:bookmarked]
                @bookmarked_posts
