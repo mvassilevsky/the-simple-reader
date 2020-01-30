@@ -37,7 +37,9 @@ class Feed < ApplicationRecord
       save if changed?
       parse_and_save_posts(parsed_feed)
     rescue Feedjira::NoParserAvailable, Errno::ECONNREFUSED
-      errors.add(:url, 'invalid')
+      errors.add(:url, 'invalid. Make sure you are entering the full URL ' \
+                       "(starting with 'http'), and it links directly to the " \
+                       'feed (not the normal website).')
     end
     self
   end
