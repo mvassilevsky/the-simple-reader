@@ -18,14 +18,12 @@
 #  index_posts_on_posted_at  (posted_at)
 #
 
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+post:
+  id: 1
+  author: 'Test Author'
+  title: 'Test Post Title'
+  content: 'Test Post Content'
+  posted_at: <%= '2020-01-01 00:00:00'.to_time %>
+  feed_id: 1
+  url: 'https://www.nonexistent-website.com/test-post'
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
