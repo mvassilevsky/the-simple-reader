@@ -20,9 +20,14 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-user:
-  id: 1
+user_1:
   email: 'test@test.com'
+  encrypted_password: 'test'
+  new_posts_first: true
+  unread_only: true
+
+user_2:
+  email: 'test2@test.com'
   encrypted_password: 'test'
   new_posts_first: true
   unread_only: true

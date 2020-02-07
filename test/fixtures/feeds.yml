@@ -14,7 +14,6 @@
 #  index_feeds_on_url  (url) UNIQUE
 #
 
-feed:
-  id: 1
+feed_1:
   title: 'Feed 1'
   url: 'http://www.nonexistent-website.com'

@@ -17,6 +17,6 @@
 
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-user_feed:
-  user_id: 1
-  feed_id: 1
+user_1_feed_1:
+  user: user_1
+  feed: feed_1
