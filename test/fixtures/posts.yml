@@ -23,5 +23,21 @@ post_1:
   title: 'Test Post Title'
   content: 'Test Post Content'
   posted_at: <%= '2020-01-01 00:00:00'.to_time %>
-  feed_id: 1
+  feed: feed_1
   url: 'https://www.nonexistent-website.com/test-post'
+
+post_2:
+  author: 'Test Author'
+  title: 'Test Post Title 2'
+  content: 'Test Post Content 2'
+  posted_at: <%= '2020-01-02 00:00:00'.to_time %>
+  feed: feed_1
+  url: 'https://www.nonexistent-website.com/test-post-2'
+
+post_3:
+  author: 'Test Author'
+  title: 'Test Post Title 3'
+  content: 'Test Post Content 3'
+  posted_at: <%= '2020-01-03 00:00:00'.to_time %>
+  feed: feed_1
+  url: 'https://www.nonexistent-website.com/test-post-3'

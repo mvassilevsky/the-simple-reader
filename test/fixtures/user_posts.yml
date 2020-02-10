@@ -25,3 +25,9 @@ user_1_post_1:
   user: user_1
   post: post_1
   read: true
+
+user_1_post_3:
+  user: user_1
+  post: post_3
+  read: true
+  bookmarked: true

@@ -23,7 +23,19 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def test_unread_posts
+    read_post = posts(:post_1)
+    assert_not(users(:user_1).unread_posts.include?(read_post))
+
+    unread_post = posts(:post_2)
+    assert(users(:user_1).unread_posts.include?(unread_post))
+  end
+
+  def test_bookmarked?
+    unbookmarked_post = posts(:post_1)
+    assert_not(users(:user_1).bookmarked?(unbookmarked_post))
+
+    bookmarked_post = posts(:post_3)
+    assert(users(:user_1).bookmarked?(bookmarked_post))
+  end
 end
