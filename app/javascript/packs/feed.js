@@ -14,9 +14,11 @@ $(document).ready(function() {
 
   $('.post.unread').each(function() {
     var unreadPost = $(this);
-    $(window).on('scroll', function() {
+    var event = 'scroll.scrollPostTop' + unreadPost.data('id')
+    $(window).on(event, function() {
       if ($(window).scrollTop() > unreadPost.offset().top) {
         markRead(unreadPost);
+        $(window).off(event);
       }
     });
   });
