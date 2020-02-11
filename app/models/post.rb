@@ -44,7 +44,10 @@ class Post < ApplicationRecord
   end
 
   def read_by?(user)
-    user_posts.where(user_id: user.id, read: true).exists?
+    # Not a database query because that causes N+1 queries.
+    user_posts.any? do |user_post|
+      user_post.user_id == user.id && user_post.read
+    end
   end
 
   private

@@ -40,9 +40,9 @@ class FeedsController < ApplicationController
              elsif current_user.unread_only
                current_user.unread_posts
              else
-               current_user.posts.includes(:user_posts)
+               current_user.posts
              end
-    @posts = @posts.order(posted_at: post_order)
+    @posts = @posts.includes(:feed, :user_posts).order(posted_at: post_order)
   end
 
   def post_order
