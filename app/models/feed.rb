@@ -36,7 +36,7 @@ class Feed < ApplicationRecord
       self.title = parsed_feed.title
       save if changed?
       parse_and_save_posts(parsed_feed)
-    rescue Feedjira::NoParserAvailable, Errno::ECONNREFUSED
+    rescue Feedjira::NoParserAvailable, Errno::ECONNREFUSED, SocketError
       errors.add(:url, 'invalid. Make sure you are entering the full URL ' \
                        "(starting with 'http'), and it links directly to the " \
                        'feed (not the normal website).')
