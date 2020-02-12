@@ -19,8 +19,8 @@ class FeedsController < ApplicationController
       feed = Feed.create_from_url(url)
       current_user.feeds << feed if feed.persisted?
     end
-    redirect_back(fallback_location: root_path,
-                  flash: { error: feed.errors.full_messages })
+    flash[:error] = feed.errors.full_messages if feed.errors.any?
+    redirect_back(fallback_location: root_path)
   end
 
   def unsubscribe
