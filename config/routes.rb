@@ -28,4 +28,6 @@ Rails.application.routes.draw do
       post 'mark_read'
     end
   end
+
+  get '/about' => "static_pages#about"
 end
