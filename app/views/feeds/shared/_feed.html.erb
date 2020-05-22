@@ -14,7 +14,7 @@
         <%= post.posted_at.strftime('%Y-%m-%d') %>
       </div>
       <br>
-      <div><%= post.content.html_safe %></div>
+      <div><%= post.content.html_safe if post.content %></div>
       <br>
       <div>
         <% if @bookmarked_posts.include?(post) %>
