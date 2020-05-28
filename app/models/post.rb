@@ -20,7 +20,7 @@
 
 class Post < ApplicationRecord
   NON_CONTENT_TAGS_REGEX =
-    /<((script)|(style)|(link))>.*<((\/script)|(\/style)|(\/link))>/
+    /<((script)|(style)|(link))>.*?<((\/script)|(\/style)|(\/link))>/
 
   validates :feed_id, presence: true
 
