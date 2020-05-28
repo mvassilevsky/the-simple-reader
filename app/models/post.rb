@@ -19,6 +19,9 @@
 #
 
 class Post < ApplicationRecord
+  NON_CONTENT_TAGS_REGEX =
+    /<((script)|(style)|(link))>.*<((\/script)|(\/style)|(\/link))>/
+
   validates :feed_id, presence: true
 
   belongs_to :feed
@@ -53,6 +56,7 @@ class Post < ApplicationRecord
   private
 
   def self.sanitize_content(html)
-    ActionController::Base.helpers.sanitize(html)
+    contentful_html = html.gsub(NON_CONTENT_TAGS_REGEX, '')
+    ActionController::Base.helpers.sanitize(contentful_html)
   end
 end
