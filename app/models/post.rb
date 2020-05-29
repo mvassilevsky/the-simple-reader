@@ -56,6 +56,7 @@ class Post < ApplicationRecord
   private
 
   def self.sanitize_content(html)
+    return nil if html.nil?
     contentful_html = html.gsub(NON_CONTENT_TAGS_REGEX, '')
     ActionController::Base.helpers.sanitize(contentful_html)
   end
