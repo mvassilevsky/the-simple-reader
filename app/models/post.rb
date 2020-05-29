@@ -25,7 +25,7 @@ class Post < ApplicationRecord
   validates :feed_id, presence: true
 
   belongs_to :feed
-  has_many :user_posts
+  has_many :user_posts, dependent: destroy
 
   # Initializes a Post from a Feedjira parsed entry.
   def self.parse(feed_entry)
