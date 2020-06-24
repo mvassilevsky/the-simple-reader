@@ -1,5 +1,7 @@
 # The Simple Reader
 
+[www.thesimplereader.com](https://www.thesimplereader.com/)
+
 A minimalistic RSS reader built on Ruby on Rails.
 
 # Requirements

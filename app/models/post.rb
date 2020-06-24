@@ -20,12 +20,12 @@
 
 class Post < ApplicationRecord
   NON_CONTENT_TAGS_REGEX =
-    /<((script)|(style)|(link))>.*?<((\/script)|(\/style)|(\/link))>/
+    /<((script)|(style)|(link))>.*?<((\/script)|(\/style)|(\/link))>/m
 
   validates :feed_id, presence: true
 
   belongs_to :feed
-  has_many :user_posts
+  has_many :user_posts, dependent: :destroy
 
   # Initializes a Post from a Feedjira parsed entry.
   def self.parse(feed_entry)
@@ -56,6 +56,7 @@ class Post < ApplicationRecord
   private
 
   def self.sanitize_content(html)
+    return nil if html.nil?
     contentful_html = html.gsub(NON_CONTENT_TAGS_REGEX, '')
     ActionController::Base.helpers.sanitize(contentful_html)
   end
