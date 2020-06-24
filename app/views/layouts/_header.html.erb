@@ -1,14 +1,20 @@
 <header>
-  <%= link_to 'Home', root_path %> | 
-  <% if current_user %>
-    <%= link_to 'Bookmarked Posts', feeds_path(@feed, :bookmarked => true) %> | 
-    <%= link_to 'Settings', edit_user_registration_path %> | 
-    <%= link_to 'About', about_path %> |
-    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to 'About', about_path %> |
-    <%= link_to 'Login', new_user_session_path %> | 
-    <%= link_to 'Register', new_user_registration_path %>
-  <% end %>
+  <div class='logo'>
+    <%= link_to root_path do %>
+      <img src='/images/logo.png'>
+    <% end %>
+  </div>
+  <div class='header-links'>
+    <% if current_user %>
+      <%= link_to 'bookmarks', feeds_path(@feed, :bookmarked => true) %> | 
+      <%= link_to 'settings', edit_user_registration_path %> | 
+      <%= link_to 'about', about_path %> |
+      <%= link_to 'sign out', destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'about', about_path %> |
+      <%= link_to 'login', new_user_session_path %> | 
+      <%= link_to 'register', new_user_registration_path %>
+    <% end %>
+  </div>
   <hr>
 </header>
