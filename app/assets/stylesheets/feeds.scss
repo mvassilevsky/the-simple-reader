@@ -9,9 +9,10 @@
 }
 
 .feed {
-  margin: auto;
+  margin-right: unquote('max(calc((100% - 720px)/2), 0px);');
+  margin-left: unquote('max(calc((100% - 720px)/2), 0px);');
   max-width: 100%;
-  width: 720px;
+  min-width: unquote('min(414px, 100%);');
   overflow: hidden;
 
   h3 {
