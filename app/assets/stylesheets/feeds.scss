@@ -9,10 +9,7 @@
 }
 
 .feed {
-  margin-right: m#{a}x(calc((100% - 720px)/2), 0px);
-  margin-left: m#{a}x(calc((100% - 720px)/2), 0px);
   max-width: 100%;
-  min-width: m#{i}n(414px, 100%);
   overflow: hidden;
 
   h3 {

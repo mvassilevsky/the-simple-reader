@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+.feed {
+  margin-right: max(calc((100% - 720px)/2), 0px);
+  margin-left: max(calc((100% - 720px)/2), 0px);
+  min-width: min(414px, 100%);
+}
