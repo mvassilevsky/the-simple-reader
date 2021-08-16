@@ -33,6 +33,7 @@ gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'tzinfo-data'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+gem 'pagy'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

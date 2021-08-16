@@ -3,11 +3,12 @@ class FeedsController < ApplicationController
   before_action :set_up_feed, :only => [:index, :show]
 
   def index
+    @pagy, @posts = pagy(@posts)
   end
 
   def show
     @feed = Feed.find(params[:id])
-    @posts = @posts.where(feed_id: @feed.id)
+    @pagy, @posts = pagy(@posts.where(feed_id: @feed.id))
   end
 
   def create

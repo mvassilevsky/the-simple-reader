@@ -9,7 +9,7 @@
         <% end %>
       </h3>
       <div>
-        <%= link_to post.feed.title, feed_path(post.feed) %>, 
+        <%= link_to post.feed.title, feed_path(post.feed) %>,
         <%= "#{post.author}, " if post.author.present? %>
         <%= post.posted_at.strftime('%Y-%m-%d') %>
       </div>
@@ -27,4 +27,5 @@
     </div>
     <hr>
   <% end %>
+  <%== pagy_nav(@pagy) %>
 </div>
