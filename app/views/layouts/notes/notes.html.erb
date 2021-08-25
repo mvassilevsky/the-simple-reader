@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>The Simple Docs</title>
+    <title>The Simple Note</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Simple application suite."/>
+    <meta name="description" content="Simple note editor."/>
     <link rel="shortcut icon" href="/images/notes_favicon.ico">
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <%= render 'layouts/notes/header' %>
     <% if flash.any? %>
       <% flash.each do |key, value| %>
         <%= content_tag :div, class: "flash #{key}" do %>

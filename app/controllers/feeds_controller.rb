@@ -1,4 +1,5 @@
 class FeedsController < ApplicationController
+  layout 'reader/reader'
   before_action :authenticate_user!, :except => [:show]
   before_action :set_up_feed, :only => [:index, :show]
 

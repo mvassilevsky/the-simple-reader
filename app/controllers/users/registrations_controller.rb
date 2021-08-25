@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  layout 'reader/reader'
   before_action :configure_permitted_parameters
 
   protected

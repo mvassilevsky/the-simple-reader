@@ -41,6 +41,7 @@ class User < ApplicationRecord
               ')', user.id
              )
            }, through: :feeds, source: :posts, class_name: 'Post'
+  has_many :notes
 
   # Returns whether a post has been bookmarked by this user.
   #

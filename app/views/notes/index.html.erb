@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Notes</h1>
+
+<table class="notes-list">
+  <tbody>
+    <% @notes.each do |note| %>
+      <% title = note.title %>
+      <% title = title[0..40] + '...' if title.length > 43 %>
+      <tr>
+        <td><%= link_to title, note %></td>
+        <td><%= link_to 'Edit', edit_note_path(note) %></td>
+        <td>
+          <%= link_to 'Delete', note, method: :delete,
+                                      data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Write New Note', new_note_path %>

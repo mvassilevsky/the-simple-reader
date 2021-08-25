@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
+  resources :notes
   authenticated :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
 
   authenticated :user do
-    root 'feeds#index', as: :authenticated_root
+    root 'static_pages#index', as: :authenticated_root
   end
 
   unauthenticated do
-    root 'home#index'
+    root 'static_pages#welcome'
   end
 
   devise_for :users, controllers: {

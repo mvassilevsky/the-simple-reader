@@ -1,13 +1,15 @@
 <header>
   <div class='logo'>
     <%= link_to root_path do %>
-      <!-- <img src='/images/notes/logo.png'> -->
+      <img src='/images/reader/logo.png'>
     <% end %>
   </div>
   <div class='header-links'>
     <% if current_user %>
-      <%= link_to 'reader', feeds_path %> |
+      <%= link_to 'reader', feeds_path  %> |
       <%= link_to 'notes', notes_path %> |
+      <%= link_to 'bookmarks', feeds_path(@feed, :bookmarked => true) %> |
+      <%= link_to 'settings', edit_user_registration_path %>
       <%= link_to 'about', about_path %> |
       <%= link_to 'sign out', destroy_user_session_path, method: :delete %>
     <% else %>
