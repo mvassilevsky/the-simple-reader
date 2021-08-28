@@ -11,8 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.text_field :title, placeholder: Note::DEFAULT_TITLE %>
+  <div class="field title-field">
+    <h1>
+      <%= form.text_field :title, placeholder: Note::DEFAULT_TITLE %>
+    </h1>
   </div>
 
   <div class="field">
@@ -21,10 +23,10 @@
   </div>
 
   <div class="field">
-    <%= form.text_area :content, placeholder: Note::PLACEHOLDER_TEXT  %>
+    <%= form.text_area :content, placeholder: Note::PLACEHOLDER_TEXT %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Save Changes' %>
   </div>
 <% end %>

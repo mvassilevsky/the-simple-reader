@@ -1,3 +1,17 @@
 .notes-list {
   margin: auto;
 }
+
+.title-field {
+  text-align: center;
+}
+
+#note_title {
+  text-align: center;
+  font-size: inherit;
+  overflow: scroll;
+}
+
+#note_content {
+  margin: auto;
+}
