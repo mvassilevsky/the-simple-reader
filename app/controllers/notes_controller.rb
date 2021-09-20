@@ -17,6 +17,7 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(note_params)
     @note.user_id = current_user.id
+    @note.content = CGI.escapeHTML(@note.content)
     if @note.save
       redirect_to @note
     else

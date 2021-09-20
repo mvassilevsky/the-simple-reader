@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @note.user_id %>
-</p>
+<h1 class='title-field'><%= @note.title %></h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @note.title %>
-</p>
+<% if current_user && @note.user_id == current_user.id %>
+  <p class="privacy-text">
+    <% if @note.private? %>
+      Only you can read this note
+    <% else %>
+      Other people can read this note
+    <% end %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Private:</strong>
-  <%= @note.private %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @note.content %>
-</p>
+<div class="note-content">
+  <%=
+    Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML, tables: true, no_styles: true
+    ).render(@note.content).html_safe
+  %>
+</div>
 
 <%= link_to 'Edit', edit_note_path(@note) %> |
 <%= link_to 'Back', notes_path %>

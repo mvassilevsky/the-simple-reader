@@ -18,13 +18,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :private %>
-    <%= form.check_box :private %>
-  </div>
-
-  <div class="field">
     <%= form.text_area :content, placeholder: Note::PLACEHOLDER_TEXT %>
   </div>
+
+  <p class="privacy-text field">
+    <%= form.check_box :private %>
+    <%= form.label :private, "Don't let others read this note" %>
+  </p>
 
   <div class="actions">
     <%= form.submit 'Save Changes' %>
